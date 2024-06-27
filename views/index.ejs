@@ -1,0 +1,19 @@
+<%- include("partials/header.ejs") %>
+    <h1>Some Blogs You Can Read..</h1>
+    <div class="new-post">
+    <a href="/add">Create New Post</a>
+    </div>
+    <ul>
+        <% posts.forEach(post=>{ %>
+            <li>
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+                <p class="muted">Published at <%= post.date %>/<%= post.month %>/<%= post.year %>  <%= post.time %></p>
+                <a href="/<%= post.id %>/edit">Edit</a>
+                <form action="/<%= post.id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+<%- include("partials/footer.ejs") %>
